@@ -7,6 +7,7 @@
     "handlebars": "^4.0.12",
     "hapi": "^17.5.4",
     "inert": "^5.1.0",
+    "request": "^2.88.0",
     "vision": "^5.4.0"
   },
   "devDependencies": {},
