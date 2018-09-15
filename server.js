@@ -41,26 +41,40 @@ server.route({
         // return h.view('project', data)
         //var kembalian = Hafidz.projects()
         //console.log(kembalian)
-        Hafidz.projects(function(err,body){
-            apapa(body)
-        })
+        // Hafidz.projects(function(err,body){
+        //     apapa(body)
+        // })
+        
         console.log(varluar)
-        return varluar+"saya"
+        return getData+"saya"
     }
 })
 function apapa(par) {
     varluar = par
 }
 async function sayasaya(){
-    var options = {
-        url: "http://username:password@jira-telkomdds-devops-playground.apps.playcourt.id/rest/api/latest/project",
-        method: 'GET'
-    }
-    http(options, function (err, response, body) {
-        varluar = body
-        apalagiini(body)
-    })
+    // var options = {
+    //     url: "http://username:password@jira-telkomdds-devops-playground.apps.playcourt.id/rest/api/latest/project",
+    //     method: 'GET'
+    // }
+    // http(options, function (err, response, body) {
+    //     varluar = body
+    //     apalagiini(body)
+    // })
+    
 }
+
+async function getData() 
+        {
+            //await the response of the fetch call
+           let response = await fetch('http://username:password@jira-telkomdds-devops-playground.apps.playcourt.id/rest/api/latest/project');
+            //proceed once the first promise is resolved.
+           let data = await response.json()
+           console.log('Masuk getData')
+            //proceed only when the second promise is resolved
+            return data;
+        }
+
 function apalagiini(url){
     varluar = url
 }
