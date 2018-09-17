@@ -4,9 +4,11 @@
   "description": "codex telkom developer challenge - wirosableng",
   "main": "server.js",
   "dependencies": {
+    "async": "^2.6.1",
     "handlebars": "^4.0.12",
     "hapi": "^17.5.4",
     "inert": "^5.1.0",
+    "node-fetch": "^2.2.0",
     "request": "^2.88.0",
     "vision": "^5.4.0"
   },

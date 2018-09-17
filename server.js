@@ -2,9 +2,12 @@ const Hapi = require('hapi')
 const fs = require('fs')
 const vision = require('vision')
 const handlebars = require('handlebars')
-const hafidz = require('./api/hafidz')
+const Project = require('./api/project')
 const http = require('request')
-var Hafidz = new hafidz("jira-telkomdds-devops-playground.apps.playcourt.id/rest/api/latest")
+const fetch = require('node-fetch')
+const async = require('async')
+var project = new Project("jira-telkomdds-devops-playground.apps.playcourt.id/rest/api/latest")
+
 // Config the host and port
 const server = new Hapi.Server({
     host: 'localhost',
@@ -37,46 +40,14 @@ server.route({
     method: 'GET',
     path: '/',
     handler: (request, h) => {
-        // var data = { name: request.params.name }
-        // return h.view('project', data)
-        //var kembalian = Hafidz.projects()
-        //console.log(kembalian)
-        // Hafidz.projects(function(err,body){
-        //     apapa(body)
-        // })
-        
-        console.log(varluar)
-        return getData+"saya"
+        var hasil = getAllProject()
+        return hasil
     }
 })
-function apapa(par) {
-    varluar = par
-}
-async function sayasaya(){
-    // var options = {
-    //     url: "http://username:password@jira-telkomdds-devops-playground.apps.playcourt.id/rest/api/latest/project",
-    //     method: 'GET'
-    // }
-    // http(options, function (err, response, body) {
-    //     varluar = body
-    //     apalagiini(body)
-    // })
-    
-}
-
-async function getData() 
-        {
-            //await the response of the fetch call
-           let response = await fetch('http://username:password@jira-telkomdds-devops-playground.apps.playcourt.id/rest/api/latest/project');
-            //proceed once the first promise is resolved.
-           let data = await response.json()
-           console.log('Masuk getData')
-            //proceed only when the second promise is resolved
-            return data;
-        }
-
-function apalagiini(url){
-    varluar = url
+async function getAllProject(){
+    const response = await fetch("http://username:password@jira-telkomdds-devops-playground.apps.playcourt.id/rest/api/latest/project")
+    const data = await response.json()
+    return data
 }
 
 // respone as css
