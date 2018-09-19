@@ -7,7 +7,6 @@ const http = require('request')
 const fetch = require('node-fetch')
 const async = require('async')
 var project = new Project("jira-telkomdds-devops-playground.apps.playcourt.id/rest/api/latest")
-
 // Config the host and port
 const server = new Hapi.Server({
     host: 'localhost',
@@ -40,7 +39,7 @@ server.route({
     method: 'GET',
     path: '/',
     handler: (request, h) => {
-        var hasil = getAllProject()
+        var hasil = project.getAllProject()
         return hasil
     }
 })
@@ -57,6 +56,13 @@ server.route({
     handler:(request,h) =>{
         //return h.file('asset/css/'+request.params.name,false)
         return h.file('./asset/css/'+request.params.name,false)
+    }
+})
+server.route({
+    method: 'POST',
+    path: '/',
+    handler:(request,h)=>{
+        return request.p
     }
 })
 
