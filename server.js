@@ -33,16 +33,39 @@ async function liftOff() {
     server.start()
     console.log('Server running at ' + server.info.uri)
 }   
+
+// Respone to post
+
 // respone as view
-let varluar
-server.route({
+server.route([{
     method: 'GET',
     path: '/',
     handler: (request, h) => {
         var hasil = project.getAllProject()
         return hasil
     }
-})
+},{
+    method: 'POST',
+    path: '/login',
+    handler:(request,h)=>{
+        try{
+            let uname = request.payload.username
+            let pass = request.payload.password
+
+            return h.view('index',{uname,pass})
+        }catch(err){
+            console.log(err)
+            return ""
+        }
+    }   
+},{
+    method: 'GET',
+    path: '/login',
+    handler: (request, h)=>{
+        return h.view('login.html')
+    }
+}
+])
 async function getAllProject(){
     const response = await fetch("http://username:password@jira-telkomdds-devops-playground.apps.playcourt.id/rest/api/latest/project")
     const data = await response.json()
