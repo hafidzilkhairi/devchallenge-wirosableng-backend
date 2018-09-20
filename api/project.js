@@ -15,6 +15,9 @@ class project{
         }
         return data
     }
+    async getDetailProject(){
+        
+    }
 }
 
 module.exports = project

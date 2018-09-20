@@ -7,6 +7,9 @@ const http = require('request')
 const fetch = require('node-fetch')
 const async = require('async')
 var project = new Project("jira-telkomdds-devops-playground.apps.playcourt.id/rest/api/latest")
+var express = require('express')
+var expressSession = require('express-session')
+expressSession({secret: 'max',saveUninitialized: false, resave: false})
 // Config the host and port
 const server = new Hapi.Server({
     host: 'localhost',
