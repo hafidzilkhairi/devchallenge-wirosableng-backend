@@ -44,62 +44,50 @@ server.route([{
     method: 'GET',
     path: '/',
     handler: (request, h) => {
-        var hasil = project.getAllProject()
-        return hasil
+        // var hasil = project.getAllProject()
+        // return hasil
+        return h.view('login')
     }
-},{
-    method: 'POST',
-    path: '/login',
-    handler:(request,h)=>{
+}, {
+    method: 'GET',
+    path: '/projects',
+    handler: (request, h) => {
+        return project.getAllProject()
+    }
+}, {
+    method: 'GET',
+    path: '/project/{name}/member',
+    handler: (request, h)=>{
+        return project.getMember(request.params.name)
+    }
+}, {
+    method: 'GET',
+    path: '/css/{name}',
+    handler: (request, h) => {
+        //return h.file('asset/css/'+request.params.name,false)
+        return h.file('./asset/css/' + request.params.name, false)
+    }
+}, {
+    method: 'GET',
+    path: '/img/logo/{name}',
+    handler: (request, h) => {
+        return h.file('./asset/image/logo/' + request.params.name, false)
+    }
+}, {
+    method: 'GET',
+    path: '/coba',
+    handler: (request,h)=>{
+        var projects = project.getAllProject()
         try{
-            let uname = request.payload.username
-            let pass = request.payload.password
-
-            return h.view('index',{uname,pass})
+            console.log(projects)
         }catch(err){
             console.log(err)
-            return ""
         }
-    }   
-},{
-    method: 'GET',
-    path: '/login',
-    handler: (request, h)=>{
-        return h.view('login.html')
+        
+        return projects
     }
 }
 ])
-async function getAllProject(){
-    const response = await fetch("http://username:password@jira-telkomdds-devops-playground.apps.playcourt.id/rest/api/latest/project")
-    const data = await response.json()
-    return data
-}
-
-// respone as css
-server.route({
-    method: 'GET',
-    path: '/css/{name}',
-    handler:(request,h) =>{
-        //return h.file('asset/css/'+request.params.name,false)
-        return h.file('./asset/css/'+request.params.name,false)
-    }
-})
-server.route({
-    method: 'POST',
-    path: '/',
-    handler:(request,h)=>{
-        return request.p
-    }
-})
-
-// respone as logo
-server.route({
-    method: 'GET',
-    path: '/img/logo/{name}',
-    handler: (request,h) =>{
-        return h.file('./asset/image/logo/'+request.params.name,false)
-    }
-})
 
 // call the method start to start the server
 liftOff()
