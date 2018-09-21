@@ -4,7 +4,7 @@ class project{
     constructor(param){
         this.url = param
     }
-    async getAllProject(){
+    async teamPerformance() {
         var response
         var data
         const hasil = []
@@ -20,9 +20,76 @@ class project{
                     setering = setering.replace('http://', '')
                     response = await fetch("http://devchallenge:dev12345@" + setering)
                     var member = await response.json()
-                    members.push({
-                        kerjaan: member['actors']
-                    })
+                    switch (kerjaan) {
+                        case 'UX':
+                            members.push({
+                                'UX': member['actors']
+                            })
+                            break;
+                            case 'Mobile Frontend':
+                            members.push({
+                                'Mobile Frontend': member['actors']
+                            })
+                            break;
+                            case 'SA':
+                            members.push({
+                                'SA': member['actors']
+                            })
+                            break;
+                            case 'QA':
+                            members.push({
+                                'QA': member['actors']
+                            })
+                            break;
+                            case 'Backend':
+                            members.push({
+                                'Backend': member['actors']
+                            })
+                            break;
+                        case 'DevOps':
+                            members.push({
+                                'DevOps': member['actors']
+                            })
+                            break;
+                        case 'UI':
+                            members.push({
+                                'UI': member['actors']
+                            })
+                            break;
+                        case 'SH':
+                            members.push({
+                                'SH': member['actors']
+                            })
+                            break;
+                        case 'Web Frontend':
+                            members.push({
+                                'Web Frontend': member['actors']
+                            })
+                            break;
+                        case 'Administrators':
+                            members.push({
+                                'Administrators': member['actors']
+                            })
+                            break;
+                            case 'Doc':
+                            members.push({
+                                'Doc': member['actors']
+                            })
+                            break;
+                            case 'SM':
+                            members.push({
+                                'SM': member['actors']
+                            })
+                            break;
+                            case 'PO':
+                            members.push({
+                                'PO': member['actors']
+                            })
+                            break;
+                        default:
+                            
+                    }
+                    
                 }
                 // var member = []
                 // for(const singleMember of members['actors']){

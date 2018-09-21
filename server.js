@@ -50,9 +50,9 @@ server.route([{
     }
 }, {
     method: 'GET',
-    path: '/projects',
+    path: '/teamperformance',
     handler: (request, h) => {
-        return project.getAllProject()
+        return project.teamPerformance()
     }
 }, {
     method: 'GET',
