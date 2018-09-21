@@ -13,7 +13,7 @@ expressSession({secret: 'max',saveUninitialized: false, resave: false})
 // Config the host and port
 const server = new Hapi.Server({
     host: 'localhost',
-    port: '3001'
+    port: '3000'
 })
 
 async function liftOff() {
