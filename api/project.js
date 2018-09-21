@@ -4,7 +4,7 @@ class project{
     constructor(param){
         this.url = param
     }
-    async getAllProject(){
+    async teamPerformance() {
         var response
         var data
         const hasil = []
