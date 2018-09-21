@@ -52,8 +52,7 @@ server.route([{
     method: 'GET',
     path: '/teamperformance',
     handler: (request, h) => {
-        // return project.teamPerformance()
-        return h.file('./asset/hh.json')
+        return project.teamPerformance()
     }
 }, {
     method: 'GET',
